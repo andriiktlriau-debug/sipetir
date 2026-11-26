@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monitoring Izin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="out">
+<div class="bgm" aria-hidden="true"></div>
+<nav id="sb" aria-label="Menu utama"><button class="sbt" id="sbT" title="Tampilkan / sembunyikan menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>Menu</span></button><button class="sbtn act" id="sbH" title="Beranda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Beranda</span></button><button class="sbtn" id="sb1" title="Data IUPTLS" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span>Data IUPTLS</span></button><button class="sbtn" id="sb2" title="Data IUJPTL" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V3h10v18"/><path d="M15 9h4v12"/><path d="M8 7h4M8 11h4M8 15h4"/></svg><span>Data IUJPTL</span></button><button class="sbtn out" id="sbL" title="Keluar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5v18h4"/><path d="M16 7l5 5-5 5M21 12H9"/></svg><span>Keluar</span></button></nav>
+<div class="lg" id="lg"><div class="lgbg"></div><div class="lgc"><h2>Masuk</h2>
+<label>Username</label><input id="lu" autocomplete="username">
+<label>Kata sandi</label><div class="pw"><input id="lp" type="password" autocomplete="current-password"><button type="button" id="eye" class="eye" title="Tampilkan kata sandi" aria-label="Tampilkan kata sandi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><path id="eyes" d="M3 3l18 18" style="display:none"/></svg></button></div>
+<div class="err" id="le"></div>
+<button class="p" id="lb" disabled style="width:100%;margin-top:6px">Masuk</button></div></div>
+<header class="hd"><div><span class="note" id="exn"></span></div><div class="me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span id="me"></span></div></header>
+<main id="vm">
+<div class="tbs" id="tb0"><button class="tb" id="add">+ Permohonan Baru</button><button class="tb" id="ex">Export Data</button><button class="tb" id="eh" disabled>Backup Data</button></div>
+<div class="stats" id="stats"></div>
+<div class="bar">
+<input id="q" placeholder="Cari nomor, pemohon, atau jenis izin...">
+<select id="fs"><option value="all">Semua status</option><option value="proses">Sedang diproses</option><option value="selesai">Izin terbit</option></select>
+<select id="fj" style="max-width:300px"><option value="all">Semua jenis izin</option><option>Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri</option><option>Izin Usaha Jasa Penunjang Tenaga Listrik</option></select>
+
+</div>
+<div id="list"></div>
+</main>
+<main id="vt" class="hid">
+<div class="bar" style="align-items:center"><div><h2 id="ttl" style="margin:0;font-size:20px"></h2><div class="note" id="tsb"></div></div></div>
+<div class="tbs" id="tb1"><button class="tb" id="tex">Export Data</button></div>
+<div class="stats" id="tst"></div>
+<div class="bar"><input id="tq" placeholder="Cari nama perusahaan atau nomor kegiatan usaha..."><select id="tf"><option value="all">Semua status data</option><option value="lengkap">Lengkap</option><option value="belum">Belum lengkap</option><option value="kosong">Belum diisi</option></select></div>
+<div id="tlist"></div>
+</main>
+<dialog id="dlg"><h3 style="margin:0 0 6px">Permohonan Baru</h3>
+<label>Nama Perusahaan</label><input id="n">
+<label>Nomor Kegiatan Usaha</label><input id="nk">
+<label>Tanggal Permohonan</label><input id="tg" type="date">
+<label>Jenis izin</label><select id="j"><option>Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri</option><option>Izin Usaha Jasa Penunjang Tenaga Listrik</option></select>
+<div class="act" style="justify-content:flex-end;margin-top:14px"><button id="cx">Batal</button><button class="p" id="sv">Simpan</button></div></dialog>
+<dialog id="dlgn"><h3 style="margin:0 0 6px">Konfirmasi Penyelesaian Tahap</h3>
+<div class="note" id="dnt"></div>
+<label>Nama Tenaga Teknis yang menyetujui (wajib diisi)</label><input id="dnn" placeholder="Nama lengkap Tenaga Teknis">
+<select id="dns" style="display:none"><option value="">-- Pilih nama Tenaga Teknis --</option></select>
+<div id="lkw" style="display:none"><label>Link Tabel Verifikasi (wajib diisi)</label><input id="lkn" placeholder="https://..."></div>
+<div class="act" style="justify-content:flex-end;margin-top:14px"><button id="dc">Batal</button><button class="p" id="do">Setujui & Lanjut</button></div></dialog>
+<dialog id="dlgh"><h3 style="margin:0 0 6px">Hapus Permohonan?</h3><div class="note" id="dht"></div><div class="note" style="margin-top:6px">Data permohonan ini akan dihapus dan tidak dapat dikembalikan.</div><div class="act" style="justify-content:flex-end;margin-top:14px"><button id="hc">Batal</button><button class="dg" id="hy">Hapus</button></div></dialog>
+<dialog id="dlgb"><h3 style="margin:0 0 6px">Kembali ke Tahap Sebelumnya?</h3><div class="note" id="dbt"></div><div class="act" style="justify-content:flex-end;margin-top:14px"><button id="bc">Batal</button><button class="p" id="bk">Ya, Kembalikan</button></div></dialog>
+<dialog id="dlge"><h3 style="margin:0 0 6px">Export Data</h3><div class="note">Pilih format file. Excel dan PDF sudah dirapikan dan siap dicetak.</div><div class="act" style="flex-direction:column;align-items:stretch;margin-top:12px"><button class="tb" id="xc" style="width:100%">CSV</button><button class="tb" id="xx" style="width:100%">Excel (.xlsx)</button><button class="tb" id="xp" style="width:100%">PDF</button></div><div class="act" style="justify-content:flex-end;margin-top:12px"><button id="xb">Batal</button></div></dialog>
+<dialog id="dlgt"><h3 id="dtt" style="margin:0 0 4px"></h3><div class="note" id="dts"></div>
+<div id="dtf"></div>
+<div class="err" id="dte"></div>
+<div class="act" style="justify-content:flex-end;margin-top:10px"><button id="dtc">Batal</button><button class="p" id="dtv">Simpan</button></div>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>
